@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역 컴포넌트</title>
+</head>
+<body>
+
+    <div id="app">
+        <button>컴포넌트 등록</button>
+        <my-component></my-component> <!--전역 컴포넌트 표시-->
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:'<div>전역 컴포넌트가 등록되었습니다!</div>'
+        });
+
+        new Vue({
+            el:'#app'
+        });
+        /* -> 전역 컴포넌트 등록 형식
+        Vue.component('컴포넌트 이름',{
+            //컴포넌트 내용
+        });
+        */
+
+        /*
+        ==용어==
+        사용자 정의 태그 : HTML 표준 태그들 이외에도 웹 개발자가 직접 정의하여 사용할 수 있는 태그
+        케밥 기법 : 변수가 단어의 조합으로 이루어져 있을 때, 단어와 단어 사이를 -로 잇는 변수 명명 방식
+        (예: my-component 나 my-global-component 등)
+        */
+    </script>
+</body>
+</html>
