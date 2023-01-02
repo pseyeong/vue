@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props//상위에서 하위로 데이터 보내기</title>
+</head>
+<body>
+    <!--
+        child-component를 전역으로 등록한 것 외엔 딱히 상위 컴포넌트를 지정하지 않았는데도 props를 보낼 수 있던 이유는
+        컴포넌트를 등록함과 동시에 뷰 인스턴스 자체가 상위 컴포넌트가 되었기 때문 
+
+        뷰 인스턴스(상위 컴포넌트) ->> [props를 통해 데이터 전달] ->> child-component(하위 컴포넌트)
+    -->
+    <div>
+        
+        <!--
+            ==상위 컴포넌트의 HTML 코드==
+            <child-component v-bind:props 속성 이름 ="상위 컴포넌트의 data 속성"></child-component>
+        -->
+
+        <div id="app">
+            <child-component v-bind:propsdata="message"></child-component>
+        </div>
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        Vue.component('child-component',{
+            props:['propsdata'],
+            template:'<p>{{propsdata}}</p>',
+        });
+
+        new Vue({ // 인스턴스 하나 생성
+            el:'#app',
+            data:{
+                message:'hello vue! passed from parent component'
+            }
+        });
+
+
+        /*
+        ==하위 컴포넌트의 props 속성 정의 방식==
+        Vue.component('child-component',{
+            props:['props 속성 이름'],
+        });
+        
+        */
+
+
+
+    </script>
+
+    
+</body>
+</html>

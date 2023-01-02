@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 버스</title>
+</head>
+<body>
+
+    <div id="app">
+        <child-component></child-component>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        var eventBus = new Vue();
+        
+        Vue.component('child-component',{
+            template:'<div>하위 컴포넌트 영역입니다. <button v-on:click="showLog">show</button></div>',
+            methods:{
+                showLog:function(){
+                    eventBus.$emit('triggerEventBus',100);
+                }
+            }
+        });
+
+        var app = new Vue({
+            el:'#app',
+            created:function(){
+                eventBus.$on('triggerEventBus', function(value){
+                    console.log("이벤트를 전달받음. 전달받은 값 :", value);
+                });
+            }
+        });
+
+        
+
+        /*   
+        ==이벤트 버스 구현 방식==
+    
+       //이벤트 버스를 위한 추가 인스턴스 1개 생성
+       var eventBus = new Vue();
+       //이벤트를 보내는 컴포넌트
+       methods:{
+        메서드명 :function(){
+            eventBus.$emit('이벤트명',데이터);
+        }
+       }
+
+       //이벤트를 받는 컴포넌트
+       methods:{
+        created:function(){
+            eventBus.$on('이벤트명',function(데이터){
+                ...
+            });
+        }
+       }
+
+       */
+    </script>
+
+    
+</body>
+</html>
+
+

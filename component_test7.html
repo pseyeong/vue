@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하위에서 상위 컴포넌트로 이벤트 전달</title>
+</head>
+<body>
+
+    <div id="app">
+        <child-component v-on:show-log="prinText"></child-component>
+    </div>
+
+
+    <script src="./js/vue.js"></script>
+    <script>
+        Vue.component('child-component',{
+            template:'<button v-on:click="showLog">show</button>',
+            methods:{
+                showLog:function(){
+                    this.$emit('show-log');
+                }
+            }
+        });
+
+        var app= new Vue({
+            el:'#app',
+            data:{
+                message:'hello vue! passed from parent component'
+            },
+            methods:{
+                prinText: function(){
+                    console.log("received an event");
+                    
+                }
+            }
+
+        });
+
+    /*
+        //이벤트 발생 
+        this.$emit('이벤트명');
+
+        //이벤트 수신
+        <child-component v-on:이벤트명="상위 컴포넌트의 메서드명"></child-component>
+
+
+    */
+    </script>
+
+    
+</body>
+</html>
