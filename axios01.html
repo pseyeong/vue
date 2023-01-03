@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>액시오스 연습</title>
+</head>
+<body>
+    <!--
+        //http get 요청
+        axios.get('url 주소').then().catch();
+
+        //http post 요청
+        axios.post('url 주소').then().catch();
+
+        //http 요청에 대한 옵션 속성 정의
+        axios({
+            method:'get',
+            url:'url주소',
+            ...
+        });
+
+    -->
+
+    <div id="app">
+        <button v-on:click="getData">프레임워크 목록 가져오기</button>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+
+    <script>
+        new Vue({
+            el:'#app',
+            methods:{
+                getData: function(){
+                    axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json').then(function(response){
+                        console.log(response);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

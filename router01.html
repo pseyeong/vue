@@ -10,6 +10,44 @@
     <!--
         라우팅 : 웹 페이지 간의 이동 방법
         뷰 라우터 : 뷰에서 라우팅 기능을 구현할 수 있도록 지원하는 공식 라이브러리
+
+        <router-link to="URL 값"> ->> 페이지 이동 태그. 화면에서는 <a>로 표시되고 클릭하면 to에 지정한 url로 이동
+        <router-view> ->> 페이지 표시 태그. 변경되는 url에 따라 해당 컴포넌트를 뿌려주는 영역
     -->
+
+    <div id="app">
+        <h1>뷰 라우터 예제</h1>
+        <p>
+            <router-link to="/main">Main 컴포넌트로 이동</router-link>
+            <router-link to="/login">login 컴포넌트로 이동</router-link>
+        </p>
+        <router-view></router-view>
+
+    </div>
+
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+
+    <script>
+        var Main = { template:'<div>main</div>' };
+        var Login = { template:'<div>login</div>'};
+
+        var routes=[
+            {path:'/main', component:Main},
+            {path:'/login', component: Login}
+        ];
+
+        var router = new VueRouter({
+            //mode: 'history', ->> 해시 값 없애는 법
+            routes
+        });
+
+        var app = new Vue({
+            router
+
+        }).$mount('#app');
+
+    </script>
 </body>
 </html>
