@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 돔 이벤트 접근</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="clickBtn">버튼2</button>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        new Vue({
+            el:'#app',
+            methods:{
+                clickBtn:function(event){
+                    console.log(event);
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

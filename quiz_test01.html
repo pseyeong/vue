@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 연습</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}},{{bindTxt}}</p>
+        <p v-bind:id="uid">uid</p>
+        <p v-if="flag">hi</p>
+        <button v-on:click="clickBtn">버튼</button>
+        <!--
+            ==v-on 간소화==
+            <button @click="clickBtn">버튼</button>
+        -->
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'hello vue.js',
+                bindTxt:'se yeong',
+                uid:'20',
+                flag:true
+            },
+            methods:{
+                clickBtn(){
+                    console.log("hi!");
+                }
+            }
+            
+            
+        });
+    </script>
+</body>
+</html>
