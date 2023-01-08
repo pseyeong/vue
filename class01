@@ -1,0 +1,15 @@
+vue는 쪼개져있는데 webpack으로 합쳐준다
+
+바벨(babel)은 컴파일러다
+
+ESLint - 동일한 규칙으로 바꿔줌  // 자동으로 변경되게 설정
+
+ - vscode -
+• code snippet 
+ vuei -> vue 뼈대 생성
+ * code snippet 새로 만들기
+ 경로 : File >> configure Preference >> User Snippets 
+ 
+ 
+ shift+alt 다중 선택 가능 
+ 
